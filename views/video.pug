@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h2= video.name + ""
+    p 
+    label Description: #{video.description}
+    p 
+    label Posted by: #{posted_by}
+    p
+    label Link:
+    a(href=video.link) #{video.link}
+    p 
+    label Level: #{video.level}    
+    hr
+    //- If user logged in
+    if user
+        //- Hide edit and delete unless video was posted by current user
+        if user._id == video.posted_by
+            //- Link to edit video
+            a.btn.btn-default(href="/video/edit/" + video._id) Edit Video
+            br
+            //- Link to delete movie
+            a.btn.delete-video(href="#", data-id=video._id) Delete Video

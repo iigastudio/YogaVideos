@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+    h1= video.title 
+    form(method="POST" action="/video/edit/" + video._id)
+        #form-group 
+            label Name:
+            <br>
+            input.form-control(name="name" type="text" value=video.name)
+
+        #form-group 
+            label Description:
+            <br>
+            textarea.form-control(name="description", cols="25", rows="5")=video.description
+
+        #form-group 
+            label Link:
+            <br>
+            input.form-control(name="link" type="text" value=video.link)
+
+        #form-group 
+            label Level:
+            <br>
+            - var levelsArray = ['Beginner','Intermediate','Advanced']
+            select.form-control(name="level")
+                each level in levelsArray
+                    if (level == video.level)
+                        option(value=level selected) #{level}
+                    else
+                        option(value=level) #{level}
+                        
+        input.btn.btn-primary(type="submit" value="Submit")
+

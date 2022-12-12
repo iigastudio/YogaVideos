@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    if user
+        h3 Welcome Back #{user.name}!
+    h2 Yoga Videos
+    //- Loop through all videos
+    each video in videos 
+        //- Display name, description, link, level
+        label Name:
+        //- Link to video with id
+        a(href="/video/" + video._id) #{video.name}
+        p
+        label Description: #{video.description}
+        p
+        label Link: 
+        a(href=video.link) #{video.link}
+        p 
+        label Level: #{video.level}
+        p
+        br
+        br

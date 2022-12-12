@@ -1,0 +1,15 @@
+nav
+    a(href="/") Home
+    br
+    br
+    if user
+        a(href="/video/add") Add Yoga Video
+        br
+        br
+        a(href="/users/logout") Logout 
+    else
+        a(href="/users/register") Register 
+        br
+        br
+        a(href="/users/login") Login 
+    br

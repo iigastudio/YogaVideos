@@ -1,0 +1,36 @@
+extends layout 
+
+block content
+    //- Loop through and display errors
+    if errors
+        each error in errors 
+            p(style="color:red") #{error.msg}
+
+    h1 Add Yoga Video
+    //- Create form for video and post to express route
+    form(method="POST", action="/video/add")
+        //- Create input elements based on video model
+        #form-group 
+            label Yoga Video Name:
+            <br>
+            input.form-control(name="name", type="text", placeholder="Enter Yoga Video Name")
+
+        #form-group
+            label Yoga Video Description:
+            <br>
+            textarea.form-control(name="description", cols="25", rows="5", placeholder="Enter Yoga Video Description")
+    
+        #form-group 
+            label Link:
+            <br>
+            input.form-control(name="link", type="text", placeholder="Enter Yoga Video Link")
+
+        #form-group 
+            label Level:            
+            <br>
+            select.form-control(name="level" placeholder="Select Level")
+                option(value='Beginner') Beginner
+                option(value='Intermediate') Intermediate
+                option(value='Advanced') Advanced              
+        
+        input.btn.btn-primary(type="submit", value="Submit")
